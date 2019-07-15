@@ -49,6 +49,17 @@ describe('UsersService', () => {
       // Finally, we add our expectation that response will be set to the return value of the service call, userResponse.
       expect(response).toEqual(userResponse);
     });
+
+
+  it('should return a single user', () => {
+      spyOn(usersService, 'findOne').and.returnValue(of(userResponse[1]));
+
+      usersService.findOne('2').subscribe(res => {
+        response = res;
+      });
+
+      expect(response).toEqual(userResponse[1]);
+    });
 });
 
 

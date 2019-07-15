@@ -1,5 +1,5 @@
 <div class="container">
- <h3 class="d-inline">Karma</h3>
+  <h3 class="d-inline">Karma</h3>
   <p class="d-inline ml-1">is the default test runner for applications created with the Angular CLI.</p>
 
   <h2 class="text-uppercase">testing frameworks </h2>
@@ -35,7 +35,23 @@
 
   <div class="row">
     <pre>
-      {{code}}
+    {{code}}
     </pre>
   </div>
+
+
+<div class="row">
+  <div class="col-12 col-md-6" *ngFor="let user of users">
+   <div class="">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{user.name}}</h5>
+        <p class="card-text">{{user.role}}: <em>{{user.pokemon}}</em></p>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+
+
 </div>

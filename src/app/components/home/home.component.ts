@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UsersService} from '../../services/users/users.service';
 
 @Component({
   selector: 'pikachu-home',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+    users;
     code = `// A Jasmine suite
       describe('Adder', () => {
         // A jasmine spec
@@ -22,10 +23,13 @@ export class HomeComponent implements OnInit {
           expect(Adder.add(2, 0)).toEqual(2);
         });
       });`;
-  
-  constructor() { }
+
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
+    this.usersService.allUsers().subscribe(res => {
+      this.users = res;
+    });
   }
 
 }
