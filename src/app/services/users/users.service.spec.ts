@@ -33,6 +33,12 @@ describe('UsersService', () => {
     expect(usersService).toBeTruthy();
   });
 
+  // *** There's no point in mocking simple function like all().
+  // Furthermore, if you mock it, you'll end up with a test that'll always pass, even if the function returns gibberish
+  // *** misunderstood a basic concept of mocking. you should never ever mock the function/method/class whatever you want to test
+
+
+
   // test for the expectation that allUsers will return a collection of users.
   it('should return a collection of users', () => {
       // Then we use the spyOn() method to spy on usersService.all
@@ -51,11 +57,12 @@ describe('UsersService', () => {
     });
 
 
-  it('should return a single user', () => {
+  xit('should return a single user', () => {
       spyOn(usersService, 'findOne').and.returnValue(of(userResponse[1]));
 
-      usersService.findOne('2').subscribe(res => {
+      usersService.findOne('1').subscribe(res => {
         response = res;
+        console.log('@@@ test response', response);
       });
 
       expect(response).toEqual(userResponse[1]);
